@@ -1,11 +1,13 @@
 {
   "name": "apex-drop-farmer-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "pkg ."
+    "build": "pnpm run build-esbuild && pnpm run build-pkg",
+    "build-pkg": "pkg .",
+    "build-esbuild": "esbuild --bundle --platform=node index.js --outfile=dist/apex-drop-farmer-server.bundle.cjs"
   },
   "bin": "index.js",
   "pkg": {
@@ -22,6 +24,7 @@
   "dependencies": {
     "bufferutil": "^4.0.8",
     "chalk": "^4.1.2",
+    "esbuild": "^0.24.0",
     "socket.io": "^4.8.0",
     "utf-8-validate": "^6.0.4"
   }
